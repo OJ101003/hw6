@@ -6,9 +6,9 @@ export default function ApiPage() {
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch("https://shibe.online/api/shibes");
-      const data = await response.json();
-      setImage(data);
+      fetch("https://dog.ceo/api/breeds/image/random")
+        .then((response) => response.json())
+        .then((data) => setImage(data.message));
     }
     getData();
   }, []);
@@ -18,7 +18,7 @@ export default function ApiPage() {
         <h2>Home Page</h2>
       </Link>
       <br></br>
-      <img src={image[0]} alt="shibe" />
+      <img src={image} alt="dogpicture" />
     </>
   );
 }
